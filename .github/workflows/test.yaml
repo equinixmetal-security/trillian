@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - master
+      # NOTE(jaosorior): This is here while a fork
+      # of trillian is maintained. Once this merges in
+      # upstream, this can be removed.
+      - crdb
+      - main
   pull_request:
   workflow_dispatch:
 
