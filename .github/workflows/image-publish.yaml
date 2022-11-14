@@ -1,0 +1,25 @@
+---
+name: Publish images
+on:
+  push:
+    branches:
+      - main
+  # Allows releasing on demand.
+  workflow_dispatch:
+
+jobs:
+  publish-log-signer:
+    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@main
+    with:
+      name: trillian-log-signer
+      tag: ${GITHUB_REF_NAME}
+      latest: true
+      dockerfile_path: ./examples/deployment/docker/log_signer/Dockerfile
+
+  publish-log-server:
+    uses: metal-toolbox/container-push/.github/workflows/container-push.yml@main
+    with:
+      name: trillian-log-server
+      tag: ${GITHUB_REF_NAME}
+      latest: true
+      dockerfile_path: ./examples/deployment/docker/log_server/Dockerfile
